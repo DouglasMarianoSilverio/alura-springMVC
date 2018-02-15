@@ -6,6 +6,7 @@
 <html>
 <head>
 <c:url value="/" var="contextPath" />
+
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport"
@@ -151,8 +152,7 @@
 		</ul>
 
 		<h2>
-			<a href="${s:mvcUrl('PC#listar').build() }">Veja todos os livros que
-				publicamos!</a>
+			<a href="${s:mvcUrl('PC#listar').build()}">Veja todos os livros que publicamos!</a>
 		</h2>
 	</section>
 
