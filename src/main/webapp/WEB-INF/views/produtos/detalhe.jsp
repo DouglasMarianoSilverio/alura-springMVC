@@ -91,6 +91,7 @@
 
 		<section class="buy-options clearfix">
 			<form action='<c:url value="/carrinho/add"/>'   method="post" class="container">
+				 <security:csrfInput/>	
 				<input type="hidden" name="produtoId" value="${produto.id }" />
 				<ul id="variants" class="clearfix">
 					<c:forEach items="${produto.precos }" var="preco">

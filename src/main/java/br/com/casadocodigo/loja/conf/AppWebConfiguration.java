@@ -16,6 +16,7 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -91,28 +92,30 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+
 	@Bean
-	public CacheManager cacheManager()
-	{
-		CacheBuilder< Object, Object> builder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5, TimeUnit.MINUTES);
+	public CacheManager cacheManager() {
+		CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5,
+				TimeUnit.MINUTES);
 		GuavaCacheManager manager = new GuavaCacheManager();
 		manager.setCacheBuilder(builder);
-		return manager;	
+		return manager;
 	}
-	
+
 	@Bean
-	public ViewResolver contentNegotiationResolver( ContentNegotiationManager manager )
-	{
+	public ViewResolver contentNegotiationResolver(ContentNegotiationManager manager) {
 		List<ViewResolver> viewResolvers = new ArrayList<>();
 		viewResolvers.add(internalResourceViewResolver());
 		viewResolvers.add(new JsonViewResolver());
-		
+
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 		resolver.setViewResolvers(viewResolvers);
 		resolver.setContentNegotiationManager(manager);
-		
+
 		return resolver;
-		
+
 	}
+
+	
 
 }
