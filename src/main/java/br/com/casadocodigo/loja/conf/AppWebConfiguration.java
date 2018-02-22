@@ -87,6 +87,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
+	
 
 	@Bean
 	public RestTemplate restTemplate() {
