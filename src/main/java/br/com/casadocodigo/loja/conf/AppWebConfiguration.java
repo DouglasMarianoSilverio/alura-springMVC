@@ -122,16 +122,10 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	}
 	
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-	    registry.addInterceptor(localeChangeInterceptor());
-	}
-	
-	@Bean 
-	public LocaleChangeInterceptor localeChangeInterceptor(){
-	    LocaleChangeInterceptor localeChangeInterceptor=new LocaleChangeInterceptor();
-	    localeChangeInterceptor.setParamName("language");
-	    return localeChangeInterceptor;
+	    registry.addInterceptor(new LocaleChangeInterceptor());
 	}
 	
 	@Bean
